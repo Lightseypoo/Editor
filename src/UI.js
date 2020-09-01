@@ -20,7 +20,11 @@
  * be able to handle will be provided in /docs/ui.md
  * - Layla A
  */
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Engine, Renderer } from './renderer.js';
+class UI {}; // TODO Implement me!!!
+export default UI;
 
-import React from "react"
-import ReactDOM from "react-dom"
-import renderer from "./renderer.js"
+// TODO - This file is mostly under the jurisdiction of Ethan.
+// Further information to be included in /docs/ui.md
