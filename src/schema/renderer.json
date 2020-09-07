@@ -1,47 +1,137 @@
 {
   "notefield": {
-    "anchorx": {
-      "type": "number",
-      "bounds": [0, 1],
-      "default": 0.5
+    "required": ["columns"],
+    "properties": {
+      "columns": {
+        "type": "number",
+        "bounds": [0, 18],
+        "default": 4
+      },
+      "anchorx": {
+        "type": "number",
+        "bounds": [0, 1],
+        "default": 0.5
+      },
+      "anchorfrom": {
+        "type": "string",
+        "options": ["left", "center", "right"],
+        "default": "center"
+      },
+      "width": {
+        "type": "number",
+        "bounds": [0, 1],
+        "default": 0.4
+      },
+      "imgleft": {
+        "type": "img",
+        "default": null
+      },
+      "imgright": {
+        "type": "img",
+        "default": null
+      },
+      "imgbeat": {
+        "type": "img",
+        "default": null
+      },
+      "imgmeasure": {
+        "type": "img",
+        "default": null
+      },
+      "imgbase": {
+        "type": "img",
+        "default": null
+      },
+      "imgbackground": {
+        "type": "img",
+        "default": null
+      }
     },
-    "anchorfrom": {
-      "type": "string",
-      "options": ["left", "center", "right"],
-      "default": "center"
-    },
-    "width": {
-      "type": "number",
-      "bounds": [0, 1],
-      "default": 0.2
-    },
-    "imgleft": {
-      "type": "img",
-      "default": null
-    },
-    "imgright": {
-      "type": "img",
-      "default": null
-    },
-    "imgbeat": {
-      "type": "img",
-      "default": null
-    },
-    "imgmeasure": {
-      "type": "img",
-      "default": null
-    },
-    "imgbase": {
-      "type": "img",
-      "default": null
-    },
-    "imgbackground": {
-      "type": "img",
-      "default": null
-    }
+    "children": ["column"]
   },
   "receptors": {},
-  "column": {},
-  "note": {},
-  "timeline": {},
+  "column": {
+    "required": ["for", "type"],
+    "properties": {
+      "for": {
+        "type": "expr",
+        "default": "*"
+      },
+      "type": {
+        "type": "string",
+        "options": ["key", "analog"],
+        "default": "key"
+      },
+      "color": {
+        "type": "color",
+        "default": "#00000000",
+        "conflicts": ["imgbackground"]
+      },
+      "imgleft": {
+        "type": "img",
+        "default": null
+      },
+      "imgright": {
+        "type": "img",
+        "default": null
+      },
+      "imgbackground": {
+        "type": "img",
+        "default": null,
+        "conflicts": ["color"]
+      }
+    },
+    "children": ["note"]
+  },
+  "note": {
+    "required": ["sprite", "class"],
+    "properties": {
+      "sprite": {
+        "type": "sprite",
+        "default": null
+      },
+      "class": {
+        "type": "expr",
+        "default": "*"
+      },
+      "coords": {
+        "type": "array",
+        "default": null
+      }
+    }
+  },
+  "timeline": {
+    "properties": {
+      "anchorx": {
+        "type": "number",
+        "bounds": [0, 1],
+        "default": 1
+      },
+      "anchory": {
+        "type": "number",
+        "bounds": [0, 1],
+        "default": 0
+      },
+      "anchorfrom": {
+        "type": "string",
+        "options": ["left", "center", "right"],
+        "default": "center"
+      },
+      "height": {
+        "type": "number",
+        "bounds": [0, 1],
+        "default": 1
+      },
+      "width": {
+        "type": "number",
+        "bounds": [0, 1],
+        "default": 0.15
+      },
+      "rotate": {
+        "type": "number",
+        "bounds": [0, 1],
+        "default": 0
+      }
+    }
+  }
 }
