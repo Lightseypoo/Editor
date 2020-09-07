@@ -1,0 +1,47 @@
+{
+  "notefield": {
+    "anchorx": {
+      "type": "number",
+      "bounds": [0, 1],
+      "default": 0.5
+    },
+    "anchorfrom": {
+      "type": "string",
+      "options": ["left", "center", "right"],
+      "default": "center"
+    },
+    "width": {
+      "type": "number",
+      "bounds": [0, 1],
+      "default": 0.2
+    },
+    "imgleft": {
+      "type": "img",
+      "default": null
+    },
+    "imgright": {
+      "type": "img",
+      "default": null
+    },
+    "imgbeat": {
+      "type": "img",
+      "default": null
+    },
+    "imgmeasure": {
+      "type": "img",
+      "default": null
+    },
+    "imgbase": {
+      "type": "img",
+      "default": null
+    },
+    "imgbackground": {
+      "type": "img",
+      "default": null
+    }
+  },
+  "receptors": {},
+  "column": {},
+  "note": {},
+  "timeline": {},
+}
