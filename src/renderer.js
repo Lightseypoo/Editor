@@ -29,6 +29,8 @@ function spawnRenderer(engineCtx) {
         constructor(props) {
             super(props);
         }
+
+        Render(delta) {}
     }
 
     return new Renderer; // ??? TODO figure out how this file will work and what is being returned

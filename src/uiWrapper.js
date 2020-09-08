@@ -23,29 +23,51 @@
 
 // TODO - Refactor this entire thing so its less of a nightmare to look at
 
-// Import react depends and factory functions for engine and renderer
+// React imports
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+// Component imports
+import TopBar from './components/topbar.js'
+
+// Low level imports
 import spawnEngine from './engine.js';
 import spawnRenderer from './renderer.js';
 
-// Spawn other layers
+// Spawn other layers TODO - Make these respawnable
 const Engine = spawnEngine();
 const Renderer = spawnRenderer(Engine);
 
-// UI Class declaration - either a non-react wrapper class for the UI layer or a react object containing engine event methods
-class UI_Wrapper {
-    constructor() {
-        this.Component = new UI(); // TODO - Figure out how tf the react object will spawn
-        // Really need Ethan for structuring the UI Layer...
-    }
-    popup() {
+function spawnUI() {
+    const editor = new UI(); // TODO - Figure out how tf the react object will spawn
 
+    // Scope-privatized editor
+    class UI_Wrapper {
+        popup() {
+
+        }
+
+        menu(id, ...args) {
+
+        }
+
+        // React-native method. don't fully understand how setState and Render work yet
+        render() {
+            // TODO Fetch DOM from Component and put our wrapper jsx around it for rendering
+            // TODO add wrapper html to this method
+            return (
+                <div id="wrapper"> // Small border for rendered components, can be made invisible
+                    <TopBar /> // UI menu buttons / Login panel. really need a ux designer
+                    <{editor} /> // this is the main editor UI
+                </div>
+            );
+        }
     }
 
-    menu(id, ...args) {
-
-    }
+    // Spawn UI Layer and bind to Engine
+    const ui = new UI_Wrapper();
+    Engine.bindCtx(ui); // This is nessecary
+    return ui;
 }
 
 class UI extends React.Component { // TODO - Determine if this needs to be an instance of a react object
@@ -54,11 +76,6 @@ class UI extends React.Component { // TODO - Determine if this needs to be an in
     }
 } // TODO Implement me!!!
 
-// Spawn UI Layer and bind to Engine
-const ui = new UI_Wrapper();
-Engine.bindCtx(ui); // This is nessecary
+export default spawnUI // TODO - Export a React Class to be applied to index.js
 
-export default ui.Component // TODO - Export a React Class to be applied to index.js
-
-// TODO - This file is mostly under the jurisdiction of Ethan.
-// Further information to be included in /docs/ui.md
+// TODO - Further information to be included in /docs/ui.md

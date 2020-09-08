@@ -4,9 +4,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import UI from './UI.js';
+import spawnUI from './uiWrapper.js';
 // TODO - Look into ServiceWorker to see if it is a good fit for this project
 import * as serviceWorker from './serviceWorker';
+
+const UI = spawnUI(); // Generates an Engine-bound wrapper with a react UI component
 
 ReactDOM.render(
   <React.StrictMode>

@@ -9,6 +9,9 @@ class Chart {
         this.noteObjects = new Map(data.noteObjects || []);
         this._NoteObject = null; // Extend NoteObject class to include schema.note properties
         this._TimingObject = null; // Extend TimingObject class to include schema.timing properties
+
+        // TODO - Process Schema
+        const enumSize = schema.inputs.types.length() + 1;
     }
 
     addNote(timePoint = 0, data = null) {

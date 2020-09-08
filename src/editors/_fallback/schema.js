@@ -5,16 +5,14 @@
 module.exports = {
     timing: [1, 2], // BPM & Relative
     input: {
-        types: [
+        types: [ // Index + 1 = value
             {
                 name: "Note", // Visible name
                 class: "note", // Class used in style and layout
-                value: 1 // Values are in binary and used for masking
             },
             {
                 name: "Hold",
                 class: "hold",
-                value: 2,
                 params: { // Extra parameters defining function
                     next: [3]
                 }
@@ -22,7 +20,6 @@ module.exports = {
             {
                 name: "Release",
                 class: "release",
-                value: 3,
                 params: {
                     last: [2]
                 }
