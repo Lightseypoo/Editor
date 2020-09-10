@@ -119,8 +119,16 @@ function SpawnEngine() {// Privatized by closure - only to be accessed by method
                 return err;
             });
         },
-        newChart(...args) {
+        async newChart(...args) {
+            if (editor.chart !== null) {
+                // Existing chart is loaded, ask if the user wants to save
+                if (!await this.menu("save", editor.chart.title))
+                    return {
+                        code: -1 // Cancelled by user
+                    };
+            }
 
+            let data = await this.menu("newchart", EditorCache);
         },
         loadChart(...args) {
             // TODO - Load a chart into currently loaded editor via user upload or backend storage
