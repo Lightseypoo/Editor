@@ -8,7 +8,7 @@
 // - Layla A
 
 // TODO - Import Login Session from dedicated class
-import Editor from "./editor.js"
+const Editor = require("./editor.js");
 
 // TODO - fix these filepaths, make this less ugly
 // This is just to complete a task
@@ -50,6 +50,7 @@ const EditorCache = (() => {
 
 
 // TODO - Move to its own file when we start working on this
+// const Login = require("./login.js");
 class Login {
     constructor(data) {
         this.key = data.key || "";
@@ -144,6 +145,7 @@ function SpawnEngine() {// Privatized by closure - only to be accessed by method
         async getView(/* delta */) { return editor.getView(); }
     };
 
+    // clean ALL of this up so this file is actually readable
     return Object.assign(
         new (class Engine{}), // Mostly for debugging and `instanceof`
         methods, // static class methods bound to the caller context
@@ -159,5 +161,5 @@ function SpawnEngine() {// Privatized by closure - only to be accessed by method
         });
 }
 
-export default SpawnEngine;
+module.exports = SpawnEngine;
 

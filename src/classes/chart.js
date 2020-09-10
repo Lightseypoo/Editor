@@ -1,7 +1,6 @@
 "use strict";
 
-import { NoteObject, TimingObject } from "./objects.js"
-export default Chart
+const { NoteObject, TimingObject } = require("./objects.js");
 
 class Chart {
     contructor(data, schema) {
@@ -32,3 +31,5 @@ class Chart {
         // TODO - Rebuild a chart object from a .ucf file
     }
 }
+
+module.exports = Chart;

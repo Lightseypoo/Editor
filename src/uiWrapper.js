@@ -22,60 +22,44 @@
  */
 
 // TODO - Refactor this entire thing so its less of a nightmare to look at
-
-// React imports
-import React from 'react';
-import ReactDOM from 'react-dom';
-
-// Component imports
-import TopBar from './components/topbar.js'
-
-// Low level imports
-import spawnEngine from './engine.js';
-import spawnRenderer from './renderer.js';
-
-// Spawn other layers TODO - Make these respawnable
-const Engine = spawnEngine();
-const Renderer = spawnRenderer(Engine);
-
-function spawnUI() {
-    const editor = new UI(); // TODO - Figure out how tf the react object will spawn
-
-    // Scope-privatized editor
-    class UI_Wrapper {
-        popup() {
-
-        }
-
-        menu(id, ...args) {
-
-        }
-
-        // React-native method. don't fully understand how setState and Render work yet
-        render() {
-            // TODO Fetch DOM from Component and put our wrapper jsx around it for rendering
-            // TODO add wrapper html to this method
-            return (
-                <div id="wrapper"> // Small border for rendered components, can be made invisible
-                    <TopBar /> // UI menu buttons / Login panel. really need a ux designer
-                    <{editor} /> // this is the main editor UI
-                </div>
-            );
-        }
-    }
-
-    // Spawn UI Layer and bind to Engine
-    const ui = new UI_Wrapper();
-    Engine.bindCtx(ui); // This is nessecary
-    return ui;
-}
-
-class UI extends React.Component { // TODO - Determine if this needs to be an instance of a react object
-    constructor(props) {
-        super(props);
-    }
-} // TODO Implement me!!!
-
-export default spawnUI // TODO - Export a React Class to be applied to index.js
-
 // TODO - Further information to be included in /docs/ui.md
+
+// Engine Layer
+import React from "react";
+
+global.Engine = require("./engine.js")();
+const Engine = global.Engine;
+
+// React Elements
+const UI = require("./components/UI.js");
+
+// Render Layer
+// const Renderer = spawnRenderer(Engine);
+
+// Spawn UI Layer and bind to Engine
+const uiWrapper = new UI_Wrapper();
+Engine.bindCtx(uiWrapper); // This is nessecary
+
+module.exports = uiWrapper;
+
+class UI_Wrapper {
+    constructor() {
+
+    }
+
+    popup() {
+
+    }
+
+    menu(id, ...args) {
+
+    }
+
+    buildUI() {
+        return (
+            <React.StrictMode>
+                <UI />
+            </React.StrictMode>
+        );
+    }
+}

@@ -1,5 +1,5 @@
-import React from 'react';
-import LoginPanel from './loginpanel';
+const React = require("react");
+const LoginPanel = require("./loginpanel.js");
 
 class TopBar extends React.component {
     constructor(props) {
@@ -20,4 +20,4 @@ class TopBar extends React.component {
     }
 }
 
-export default TopBar;
+module.exports = TopBar;

@@ -1,6 +1,3 @@
-
-export { NoteObject, TimingObject }
-
 class ChartObject {
     constructor(timePoint) {
         this.timePoint = timePoint; // Where in the timeline this object occurs at. not indexable globally but used as local map key
@@ -24,3 +21,5 @@ class TimingObject extends ChartObject {
         // TODO define base timing class
     }
 }
+
+module.exports = {NoteObject, TimingObject};

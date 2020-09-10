@@ -1,9 +1,7 @@
 "use strict";
 
  // TODO - Everything
-
-import Chart from "./classes/chart.js"
-export default Editor
+const Chart = require("./classes/chart.js");
 
 class Editor {
     constructor(data) { // data is a resolved version of manifest.json- see editor.md for more details
@@ -71,3 +69,5 @@ class Editor {
     async buildView() {}
     async getView(/* delta */) {}
 }
+
+module.exports = Editor;
