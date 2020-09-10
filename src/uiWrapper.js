@@ -44,7 +44,7 @@ module.exports = uiWrapper;
 
 class UI_Wrapper {
     constructor() {
-
+        this.UI = <UI />;
     }
 
     popup() {
@@ -58,7 +58,7 @@ class UI_Wrapper {
     buildUI() {
         return (
             <React.StrictMode>
-                <UI />
+                {this.UI}
             </React.StrictMode>
         );
     }

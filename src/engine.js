@@ -48,7 +48,6 @@ const EditorCache = (() => {
     return editors;
 });
 
-
 // TODO - Move to its own file when we start working on this
 // const Login = require("./login.js");
 class Login {
@@ -120,12 +119,18 @@ function SpawnEngine() {// Privatized by closure - only to be accessed by method
                 return err;
             });
         },
+        newChart(...args) {
+
+        },
         loadChart(...args) {
             // TODO - Load a chart into currently loaded editor via user upload or backend storage
             // We'll only support user upload for now
         },
         saveChart(...args) {
             // TODO - Cache current chart in browser, store on backend if user has an account & space
+        },
+        importChart(...args) {
+
         },
         exportChart(...args) {},
         closeChart() { return editor.closeChart(); },

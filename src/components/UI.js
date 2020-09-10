@@ -6,6 +6,7 @@ const Editor = require("./components/Editor.js");
 class UI extends React.Component { // TODO - Determine if this needs to be an instance of a react object
     constructor(props) {
         super(props);
+        this.editor = <Editor />;
     }
 
     // React-native method. don't fully understand how setState and Render work yet
@@ -15,7 +16,7 @@ class UI extends React.Component { // TODO - Determine if this needs to be an in
         return (
             <div id="wrapper"> // Small border for rendered components, can be made invisible
                 <TopBar /> // UI menu buttons / Login panel. really need a ux designer
-                <Editor />
+                {this.editor}
             </div>
         );
     }
