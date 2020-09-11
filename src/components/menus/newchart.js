@@ -8,15 +8,32 @@ class NewChart extends React.component {
             audio: "",
             title: "",
             artist: "",
-            author: ""
+            author: "",
+            tags: [],
+            editor: {} // TODO - The contents of this object vary based on editorcache data
         }
     }
 
-    // Handle filechange event
-    update(event) { // TODO - Update changed field in the data model
-        // this.setState({
-            // selectedFile: event.target.files[0]
-    // });
+    // Handle Form change event
+    update(event) {
+        let state = {}, value;
+        switch(event.target.id) {
+            case "audio":
+                value = event.target.files[0];
+                break;
+            case "tags":
+                value = event.target.value.split(",");
+                value = value.map(v => v.trim());
+                break;
+            default:
+                value = event.target.value;
+        }
+        state[event.target.id] = value;
+        this.setState(state);
+    }
+
+    updateEditor(event) {
+        // TODO - call the update function of the selected editorCache entry or change the selected entry
     }
 
     // Confirm and submit form info
@@ -24,15 +41,23 @@ class NewChart extends React.component {
         // TODO - take data model and send it to engine layer to spawn an editor and a chart
     }
 
+    cancel() {
+        // TODO - Exit this menu, if embedded disable this
+    }
+
     render() {
         return ( // TODO add chart type selector
             <div class="popup menu">
                 <header>New Chart (alpha)</header>
-                <input type="file" id="audio" onChange={this.file} /><br />
-                <label for="title">Title: </label><input type="text" id="title" /><br />
-                <label for="artist">Artist: </label><input type="text" id="artist" /><br />
-                <label for="author">Author: </label><input type="text" id="author"/><br />
-                <label for="tags">Tags: </label><input type="text" id="tags"/><br />
+                <input type="file" id="audio" onChange={this.update} /><br />
+                <label>Title: <input type="text" id="title" onChange={this.update} /></label><br />
+                <label>Artist: <input type="text" id="artist" onChange={this.update} /></label><br />
+                <label>Author: <input type="text" id="author" onChange={this.update} /></label><br />
+                <label>Tags: <textarea id="tags" onChange={this.update} /></label><br />
+                <hr />
+                <header>Editor Settings</header>
+                <span>This is where you would select chart type. Any settings here currently do nothing.</span><br />
+                <label>Keys: <input type="text" id="keys" value="4" onChange={this.updateEditor} /></label><br />
                 <button id="confirm" onClick={this.confirm}><b>Confirm</b></button>
                 <button id="cancel" onClick={this.cancel}>Cancel</button>
             </div>

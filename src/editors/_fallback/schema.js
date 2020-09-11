@@ -3,7 +3,10 @@
 // TODO - Write Schema docs
 
 module.exports = {
-    timing: [1, 2], // BPM & Relative
+    chart: { // Settings for chart
+        keys: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
+    },
+    timing: [1, 2], // BPM & Relative - Settings for Timing objects
     input: {
         types: [ // Index + 1 = value
             {
