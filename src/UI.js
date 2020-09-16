@@ -39,8 +39,6 @@ const Editor = require("./components/Editor.js");
 class UI extends React.component{
     constructor(props) {
         super(props);
-        this.editor = React.createElement(Editor);
-        this.popups = []; // Key = popup id, value = Menu Object
     }
 
     popup() {
@@ -48,7 +46,7 @@ class UI extends React.component{
     }
 
     async menu(id, options, ...args) {
-        // TODO
+        // TODO - Create menu and then send it to popup container
 
         // This code might be useless
         return new Promise((resolve, reject) => {
@@ -69,7 +67,7 @@ class UI extends React.component{
             <React.StrictMode>
                 <div id="wrapper"> // Small border for rendered components, can be made invisible
                     <TopBar /> // UI menu buttons / Login panel. really need a ux designer
-                    {this.popups}
+                    <PopupContainer />
                     <Editor />
                 </div>
             </React.StrictMode>
