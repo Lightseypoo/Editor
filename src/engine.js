@@ -33,6 +33,8 @@ const EditorCache = (() => {
         // Load Editor Data
         try {
             editor = {
+                name: manifest.name,
+                id: manifest.id,
                 layout: fs.readFileSync(manifest.layout), // Work with Ethan to structure this
                 style: fs.readFileSync(manifest.style), // This, too. this will be the default skin.
                 schema: require(manifest.schema), // script file that exports object structure, game mode descriptors, and value enumerations

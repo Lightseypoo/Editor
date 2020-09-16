@@ -3,15 +3,37 @@ const Engine = global.Engine || process.exit(1);
 
 class NewChart extends React.component {
     constructor(props) {
-        super(props); // TODO extract editorcache from props
+        super(props);
+
+        this.editorCache = props.editorCache;
         this.state = {
             audio: "",
             title: "",
             artist: "",
             author: "",
             tags: [],
-            editor: {} // TODO - The contents of this object vary based on editorcache data
-        }
+            editor: "" // Selected editor key
+        };
+
+        this.switchEditor = this.switchEditor.bind(this);
+        this.update = this.update.bind(this);
+        this.updateEditor = this.updateEditor.bind(this);
+        this.confirm = this.confirm.bind(this);
+        this.cancel = this.cancel.bind(this);
+
+        // Build Editor selector jsx - TODO make this method re-callable
+        // TODO - Support loading a default editor by user preference
+        this.editorJsx = <select value="_fallback" onChange={this.switchEditor}>
+            {...((editors) => {
+                let options = [];
+                for (const editor of editors) { // TODO make fallback not-selectable
+                    options.push(<option value={editor.id}>{editor.name}</option>);
+                }
+                return options;
+            })(props.editorCache)}
+        </select>;
+
+        this.switchEditor({target:{value: "_fallback"}});
     }
 
     // Handle Form change event
@@ -32,6 +54,11 @@ class NewChart extends React.component {
         this.setState(state);
     }
 
+    switchEditor(event) {
+        this.setState({editor: event.target.value});
+        // TODO - update editor setting JSX
+    }
+
     updateEditor(event) {
         // TODO - call the update function of the selected editorCache entry or change the selected entry
     }
@@ -39,6 +66,7 @@ class NewChart extends React.component {
     // Confirm and submit form info
     confirm() {
         // TODO - take data model and send it to engine layer to spawn an editor and a chart
+        engine.newChart();
     }
 
     cancel() {
@@ -46,8 +74,8 @@ class NewChart extends React.component {
     }
 
     render() {
-        return ( // TODO add chart type selector
-            <div class="popup menu">
+        return ( // TODO add chart type selector - TODO unhardcode the Editor settings
+            <div class="vertical">
                 <header>New Chart (alpha)</header>
                 <input type="file" id="audio" onChange={this.update} /><br />
                 <label>Title: <input type="text" id="title" onChange={this.update} /></label><br />

@@ -25,41 +25,56 @@
 // TODO - Further information to be included in /docs/ui.md
 
 // Engine Layer
-import React from "react";
+const Engine = global.Engine = require("./engine.js")();
 
-global.Engine = require("./engine.js")();
-const Engine = global.Engine;
-
-// React Elements
-const UI = require("./components/UI.js");
+// React
+const React = require("react");
+const Menu = require("./components/Menu.js");
+const TopBar = require("./components/TopBar.js");
+const Editor = require("./components/Editor.js");
 
 // Render Layer
 // const Renderer = spawnRenderer(Engine);
 
-// Spawn UI Layer and bind to Engine
-const uiWrapper = new UI_Wrapper();
-Engine.bindCtx(uiWrapper); // This is nessecary
-
-module.exports = uiWrapper;
-
-class UI_Wrapper {
-    constructor() {
-        this.UI = <UI />;
+class UI extends React.component{
+    constructor(props) {
+        super(props);
+        this.editor = React.createElement(Editor);
+        this.popups = []; // Key = popup id, value = Menu Object
     }
 
     popup() {
 
     }
 
-    menu(id, ...args) {
+    async menu(id, options, ...args) {
         // TODO
+
+        // This code might be useless
+        return new Promise((resolve, reject) => {
+            this.menu.serve(require(`./menus/${id}.js`), data => {
+                if (data && data.err)
+                    reject(data.err);
+                else
+                    resolve(data || null);
+            }, ...args);
+        }).catch(err => {
+            console.error(err);
+            return null;
+        });
     }
 
-    buildUI() {
+    render() { // TODO - add canvas for Renderer
         return (
             <React.StrictMode>
-                {this.UI}
+                <div id="wrapper"> // Small border for rendered components, can be made invisible
+                    <TopBar /> // UI menu buttons / Login panel. really need a ux designer
+                    {this.popups}
+                    <Editor />
+                </div>
             </React.StrictMode>
         );
     }
 }
+
+module.exports = UI;

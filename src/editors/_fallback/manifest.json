@@ -1,5 +1,6 @@
 {
   "id": "_fallback",
+  "name": "Select A Format",
   "layout": "./_fallback/layout.mhtml",
   "style": "./_fallback/style.mcss",
   "schema": "./_fallback/schema.js",
