@@ -30,9 +30,30 @@ class PopupContainer extends React.component {
         });
     }
 
+    static SpawnMenu(key, args) {
+        if (!require("fs").existsSync(`./menus/${key}.js`))
+            return null;
+        return React.createElement(
+            require(`./menus/${key}.js`),
+            args // Props? may require reformatting
+        );
+    }
+
+    static SpawnPopup(data) {
+        // Data fields:
+        // id: popup component id
+        // Title: popup title bar string
+        // Body: popup body html
+        // style: popup body style
+        // scripts: popup body scripts
+        // callback: ?optional
+    }
+
     render() {
         return (<div id="popups">
-            {this.state.items}
+            {this.state.items.map(item => {
+                return (<Popup>{item}</Popup>);
+            })}
         </div>)
     }
 }

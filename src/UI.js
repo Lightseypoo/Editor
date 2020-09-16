@@ -29,7 +29,7 @@ const Engine = global.Engine = require("./engine.js")();
 
 // React
 const React = require("react");
-const Menu = require("./components/Menu.js");
+const PopupContainer = require("./components/PopupContainer.js");
 const TopBar = require("./components/TopBar.js");
 const Editor = require("./components/Editor.js");
 
@@ -39,27 +39,21 @@ const Editor = require("./components/Editor.js");
 class UI extends React.component{
     constructor(props) {
         super(props);
+        this.popupContainer = <PopupContainer />;
     }
 
     popup() {
 
     }
 
-    async menu(id, options, ...args) {
+    async menu(key, wait, ...args) {
         // TODO - Create menu and then send it to popup container
-
-        // This code might be useless
-        return new Promise((resolve, reject) => {
-            this.menu.serve(require(`./menus/${id}.js`), data => {
-                if (data && data.err)
-                    reject(data.err);
-                else
-                    resolve(data || null);
-            }, ...args);
-        }).catch(err => {
-            console.error(err);
-            return null;
-        });
+        const menu = PopupContainer.SpawnMenu(key, args);
+        if (menu === null)
+            return false;
+        return wait ?
+            await this.popupContainer.addPopup(key, menu) : // Keep thread alive
+            this.popupContainer.addPopup(key, menu); // Spawn menu and continue thread
     }
 
     render() { // TODO - add canvas for Renderer
@@ -67,7 +61,7 @@ class UI extends React.component{
             <React.StrictMode>
                 <div id="wrapper"> // Small border for rendered components, can be made invisible
                     <TopBar /> // UI menu buttons / Login panel. really need a ux designer
-                    <PopupContainer />
+                    {this.popupContainer}
                     <Editor />
                 </div>
             </React.StrictMode>

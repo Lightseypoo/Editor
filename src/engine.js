@@ -78,7 +78,7 @@ function SpawnEngine() {// Privatized by closure - only to be accessed by method
 
     // TODO - figure out if these are being done synchronously or asynchronously
     const methods = {
-        async spawnEditor(id = "") {
+        spawnEditor(id = "") {
             // Disable editor spawning without a bound context
             if (boundCtx === null)
                 return {
@@ -88,7 +88,7 @@ function SpawnEngine() {// Privatized by closure - only to be accessed by method
             // Check for existing editor instance and prompt a saveclose
             if (editor instanceof Editor) {
                 // TODO - Implement these UI interface methods in the class making these engine calls.
-                if (!await this.menu("saveclose", editor.chart.title))
+                if (!this.menu("saveclose", true, {name: editor.chart.title}))
                     return {
                         code: -1 // Cancelled by user
                     };

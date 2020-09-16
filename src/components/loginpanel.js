@@ -34,7 +34,7 @@ class LoginPanel extends React.component {
                 </div>
             </div>
         :
-            <div className="vertical">
+            <div className="panel vertical">
                 <button id="login" onClick={this.login}>Login</button>
                 <br/>
                 <button id="register" onClick={this.register}>Register</button>
