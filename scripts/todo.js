@@ -3,6 +3,7 @@
 const fs = require("fs");
 const ignore = ["node_modules", ".github", ".git", ".idea", "assets", "build"];
 let out = [], pending = 0;
+console.log("Generating TODO summary for Project.");
 fs.readdir("./", traverse.bind({prev: "."}));
 
 function traverse(_, items) {
@@ -35,7 +36,6 @@ function processFile(_, file) {
 }
 
 function finish(todo) {
-    // TODO - sort output
     console.log(`Finished TODO aggregation with ${todo.length} results.`);
     fs.writeFile("./docs/todo.txt", todo.sort().join("\n"), () => process.exit());
 }
