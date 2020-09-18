@@ -1,15 +1,15 @@
-const React = require("react")
-const Engine = global.Engine
+const React = require("react");
+const Engine = global.Engine;
 
 class LoginPanel extends React.component {
   constructor (props) {
-    super(props)
+    super(props);
     this.state = Engine.getLogin() || {
       username: "",
       picture: "",
       group: "",
       loggedIn: false
-    }
+    };
   }
 
   login () {
@@ -38,8 +38,8 @@ class LoginPanel extends React.component {
         <br/>
         <button id="register" onClick={this.register}>Register</button>
       </div>
-    )
+    );
   }
 }
 
-module.exports = LoginPanel
+module.exports = LoginPanel;

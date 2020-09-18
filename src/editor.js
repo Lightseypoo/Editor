@@ -1,7 +1,7 @@
-"use strict"
+"use strict";
 
 // TODO - Everything
-const Chart = require("./classes/chart.js")
+const Chart = require("./classes/chart.js");
 
 class Editor {
   constructor (data) { // Data is a resolved version of manifest.json- see editor.md for more details
@@ -14,27 +14,27 @@ class Editor {
       // Editor defined viewport settings, TODO - allow for overwriting via local skins
       scroll: data.schema.descriptors.scroll, // Scroll Direction 0 = down, 1 = up, 2 = left, 3 = right
       pitch: data.schema.descriptors.pitch // Scroll Pitch. controls Z-axis rotation of the notefield,
-    }
+    };
 
     // Currently Loaded chart data
-    this.chart = null // TODO - autoload recent chart
+    this.chart = null; // TODO - autoload recent chart
 
     // Current State of the editor process
     this.state = {
       // TODO - Define Me
-    }
+    };
 
-    this.layout = data.layout
-    this.style = data.style
+    this.layout = data.layout;
+    this.style = data.style;
 
     /*
      * Object definitions for Notes and Timings
      * Addon functions and menu definitions live here too
      */
-    this.schema = data.schema
+    this.schema = data.schema;
 
     // TODO - add support for chart serializers that handle note data
-    this.serializer = data.serializer
+    this.serializer = data.serializer;
   }
 
   /*
@@ -68,11 +68,11 @@ class Editor {
       style: this.style,
       input: this.schema.input,
       menus: this.schema.menus
-    }
+    };
   }
 
   async buildView () {}
   async getView (/* Delta */) {}
 }
 
-module.exports = Editor
+module.exports = Editor;

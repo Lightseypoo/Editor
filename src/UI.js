@@ -27,13 +27,13 @@
  */
 
 // Engine Layer
-const Engine = global.Engine = require("./engine.js")()
+const Engine = global.Engine = require("./engine.js")();
 
 // React
-const React = require("react")
-const PopupContainer = require("./components/PopupContainer.js")
-const TopBar = require("./components/TopBar.js")
-const Editor = require("./components/Editor.js")
+const React = require("react");
+const PopupContainer = require("./components/PopupContainer.js");
+const TopBar = require("./components/TopBar.js");
+const Editor = require("./components/Editor.js");
 
 /*
  * Render Layer
@@ -42,8 +42,8 @@ const Editor = require("./components/Editor.js")
 
 class UI extends React.component {
   constructor (props) {
-    super(props)
-    this.popupContainer = <PopupContainer />
+    super(props);
+    this.popupContainer = <PopupContainer />;
   }
 
   popup () {
@@ -52,11 +52,11 @@ class UI extends React.component {
 
   async menu (key, wait, ...args) {
     // TODO - Create menu and then send it to popup container
-    const menu = PopupContainer.SpawnMenu(key, args)
-    if (menu === null) { return false }
+    const menu = PopupContainer.SpawnMenu(key, args);
+    if (menu === null) { return false; }
     return wait
       ? await this.popupContainer.addPopup(key, menu) // Keep thread alive
-      : this.popupContainer.addPopup(key, menu) // Spawn menu and continue thread
+      : this.popupContainer.addPopup(key, menu); // Spawn menu and continue thread
   }
 
   render () { // TODO - add canvas for Renderer
@@ -68,8 +68,8 @@ class UI extends React.component {
           <Editor />
         </div>
       </React.StrictMode>
-    )
+    );
   }
 }
 
-module.exports = UI
+module.exports = UI;

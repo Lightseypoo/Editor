@@ -1,17 +1,17 @@
-const React = require("react")
+const React = require("react");
 
 class Popup extends React.component {
   constructor (props) {
-    super(props)
+    super(props);
     this.state = {
       hidden: props.hidden,
       content: props.children
-    }
+    };
   }
 
   // TODO - maybe get rid of this? will we need it? make it toggle?
   hide () {
-    this.setState({ hidden: true })
+    this.setState({ hidden: true });
   }
 
   render () {
@@ -20,6 +20,6 @@ class Popup extends React.component {
         <div className="titlebar drag" />
         {this.content}
       </div>
-    )
+    );
   }
 }

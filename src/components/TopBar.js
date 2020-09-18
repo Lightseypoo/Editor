@@ -1,9 +1,9 @@
-const React = require("react")
-const LoginPanel = require("./loginpanel.js")
+const React = require("react");
+const LoginPanel = require("./loginpanel.js");
 
 class TopBar extends React.component {
   constructor (props) {
-    super(props)
+    super(props);
   }
 
   render () {
@@ -16,8 +16,8 @@ class TopBar extends React.component {
         </div>
         <LoginPanel />
       </div>
-    )
+    );
   }
 }
 
-module.exports = TopBar
+module.exports = TopBar;

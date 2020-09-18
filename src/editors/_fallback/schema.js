@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 // TODO - Write Schema docs
 
@@ -37,4 +37,4 @@ module.exports = {
   menus: {
     todo: true // Kek TODO
   }
-}
+};

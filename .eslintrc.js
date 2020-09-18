@@ -21,7 +21,7 @@ module.exports = {
     camelcase: "error",
     quotes: ["error", "double"],
     "jsx-quotes": "error",
-    semi: "error",
+    semi: ["error", "always"],
     "no-var": "error",
     "comma-dangle": "error",
     "comma-spacing": "error",

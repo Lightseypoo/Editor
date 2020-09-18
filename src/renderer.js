@@ -11,14 +11,14 @@
  * - Layla A
  */
 
-"use strict"
+"use strict";
 
-import React from "react"
-import ReactDOM from "react-dom"
-export default spawnRenderer
+import React from "react";
+import ReactDOM from "react-dom";
+export default spawnRenderer;
 
 function spawnRenderer (engineCtx) {
-  const Engine = engineCtx
+  const Engine = engineCtx;
 
   // TODO
   function spawnCanvas (props) {
@@ -29,11 +29,11 @@ function spawnRenderer (engineCtx) {
   // TODO
   class Renderer extends React.Component {
     constructor (props) {
-      super(props)
+      super(props);
     }
 
     Render (delta) {}
   }
 
-  return new Renderer() // ??? TODO figure out how this file will work and what is being returned
+  return new Renderer(); // ??? TODO figure out how this file will work and what is being returned
 }
