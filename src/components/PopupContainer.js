@@ -45,7 +45,7 @@ class PopupContainer extends React.component {
         // Title: popup title bar string
         // Body: popup body html
         // style: popup body style
-        // scripts: popup body scripts
+        // util: popup body util
         // callback: ?optional
     }
 
