@@ -15,19 +15,19 @@ const state = {
 const noeditor = <NoEditor />;
 
 class Editor extends React.component {
-  constructor(props) {
-    super(props);
-  }
+	constructor(props) {
+		super(props);
+	}
 
-  render () {
-    return (<div id="editor">
-      {state || noeditor}
-    </div>);
-  }
+	render () {
+		return (<div id="editor">
+			{state || noeditor}
+		</div>);
+	}
 
-  load () {
+	load () {
 
-  }
+	}
 }
 
 module.exports = Editor;

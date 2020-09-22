@@ -28,8 +28,8 @@
 
 // Engine Layer
 const Engine = global.Engine = process.env.SKIP_ENGINE
-  ? require("./engine.dummy.js")()
-  : require("./engine.js")();
+	? require("./engine.dummy.js")()
+	: require("./engine.js")();
 
 // React
 const React = require("react");
@@ -43,35 +43,35 @@ const Editor = require("./components/Editor.js");
  */
 
 class UI extends React.component {
-  constructor (props) {
-    super(props);
-    this.popupContainer = <PopupContainer />;
-  }
+	constructor (props) {
+		super(props);
+		this.popupContainer = <PopupContainer />;
+	}
 
-  popup () {
+	popup () {
 
-  }
+	}
 
-  async menu (key, wait, ...args) {
-    // TODO - Create menu and then send it to popup container
-    const menu = PopupContainer.SpawnMenu(key, args);
-    if (menu === null) { return false; }
-    return wait
-      ? await this.popupContainer.addPopup(key, menu) // Keep thread alive
-      : this.popupContainer.addPopup(key, menu); // Spawn menu and continue thread
-  }
+	async menu (key, wait, ...args) {
+		// TODO - Create menu and then send it to popup container
+		const menu = PopupContainer.SpawnMenu(key, args);
+		if (menu === null) { return false; }
+		return wait
+			? await this.popupContainer.addPopup(key, menu) // Keep thread alive
+			: this.popupContainer.addPopup(key, menu); // Spawn menu and continue thread
+	}
 
-  render () { // TODO - add canvas for Renderer
-    return (
-      <React.StrictMode>
-        <div id="wrapper"> // Small border for rendered components, can be made invisible
-          <TopBar /> // UI menu buttons / Login panel. really need a ux designer
-          {this.popupContainer}
-          <Editor />
-        </div>
-      </React.StrictMode>
-    );
-  }
+	render () { // TODO - add canvas for Renderer
+		return (
+			<React.StrictMode>
+				<div id="wrapper"> // Small border for rendered components, can be made invisible
+					<TopBar /> // UI menu buttons / Login panel. really need a ux designer
+					{this.popupContainer}
+					<Editor />
+				</div>
+			</React.StrictMode>
+		);
+	}
 }
 
 module.exports = UI;

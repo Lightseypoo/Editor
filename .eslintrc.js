@@ -25,7 +25,7 @@ module.exports = {
     "no-var": "error",
     "comma-dangle": "error",
     "comma-spacing": "error",
-    indent: "error",
+    "indent": ["error", "tab"],
     "multiline-comment-style": "error",
     "no-multiple-empty-lines": "error",
     "capitalized-comments": "error",
