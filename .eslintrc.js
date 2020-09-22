@@ -4,7 +4,6 @@ module.exports = {
     es2020: true
   },
   extends: [
-    "plugin:react/recommended",
     "standard"
   ],
   parserOptions: {
@@ -20,6 +19,7 @@ module.exports = {
   rules: {
     camelcase: "error",
     quotes: ["error", "double"],
+    "space-before-function-paren": 0,
     "jsx-quotes": "error",
     semi: ["error", "always"],
     "no-var": "error",

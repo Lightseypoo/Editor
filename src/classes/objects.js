@@ -19,6 +19,7 @@ class TimingObject extends ChartObject {
   constructor (timePoint) {
     super(timePoint);
     // TODO define base timing class
+    this.type = 0;
   }
 }
 

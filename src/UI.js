@@ -27,7 +27,9 @@
  */
 
 // Engine Layer
-const Engine = global.Engine = require("./engine.js")();
+const Engine = global.Engine = process.env.SKIP_ENGINE
+  ? require("./engine.dummy.js")()
+  : require("./engine.js")();
 
 // React
 const React = require("react");

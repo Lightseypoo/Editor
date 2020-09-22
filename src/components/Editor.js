@@ -1,6 +1,7 @@
 const React = require("react");
 const Engine = global.Engine || process.exit(1);
 const NoEditor = require("./NoEditor.js");
+console.log(Engine); // TODO
 
 /*
  * TODO - This file will be responsible for parsing the layout files from the engine layer
@@ -14,7 +15,7 @@ const state = {
 const noeditor = <NoEditor />;
 
 class Editor extends React.component {
-  constructor (props) {
+  constructor(props) {
     super(props);
   }
 

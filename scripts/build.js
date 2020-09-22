@@ -18,9 +18,11 @@ process.on("unhandledRejection", err => {
 // Ensure environment variables are read.
 require("../config/env");
 
-// TODO - Trim down these dependencies
-// TODO - Make this less strict and throw less annoying errors
-// TODO - Add a build option for the UI without an engine attached
+/*
+ * TODO - Trim down these dependencies
+ * TODO - Make this less strict and throw less annoying errors
+ * TODO - Add a build option for the UI without an engine attached
+ */
 
 const path = require("path");
 const chalk = require("chalk");
