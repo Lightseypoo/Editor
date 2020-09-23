@@ -19,6 +19,7 @@ module.exports = {
   rules: {
     camelcase: "error",
     quotes: ["error", "double"],
+    "no-tabs": 0,
     "space-before-function-paren": 0,
     "jsx-quotes": "error",
     semi: ["error", "always"],
@@ -32,4 +33,4 @@ module.exports = {
     "no-useless-return": "error",
     "prefer-promise-reject-errors": 0
   }
-}
+};

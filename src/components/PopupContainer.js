@@ -1,6 +1,6 @@
 const React = require("react");
-const Popup = require("./popup.js");
-const Menu = require("./Menu.js");
+const Popup = require("./Popup.js");
+//const Menu = require("./Menu.js");
 
 class PopupContainer extends React.component {
 	constructor (props) {

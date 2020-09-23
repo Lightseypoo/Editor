@@ -21,14 +21,14 @@ const chalk = require("chalk");
 const webpack = require("webpack");
 const WebpackDevServer = require("webpack-dev-server");
 const clearConsole = require("./util/clearConsole");
-const checkRequiredFiles = require(".util/checkRequiredFiles");
+const checkRequiredFiles = require("./util/checkRequiredFiles");
 const {
 	choosePort,
 	createCompiler,
 	prepareProxy,
 	prepareUrls
-} = require(".util/WebpackDevServerUtils");
-const openBrowser = require(".util/openBrowser");
+} = require("./util/WebpackDevServerUtils");
+const openBrowser = require("./util/openBrowser");
 const paths = require("../config/paths");
 const configFactory = require("../config/webpack.config");
 const createDevServerConfig = require("../config/webpackDevServer.config");
@@ -66,7 +66,7 @@ if (process.env.HOST) {
  * We require that you explicitly set browsers and do not fall back to
  * browserslist defaults.
  */
-const { checkBrowsers } = require(".util/browsersHelper");
+const { checkBrowsers } = require("./util/browsersHelper");
 checkBrowsers(paths.appPath, isInteractive)
 	.then(() => {
 		/*

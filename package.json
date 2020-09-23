@@ -78,9 +78,6 @@
     "todo": "node scripts/todo.js",
     "lint": "npx eslint ./ --fix > lint.txt"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "browserslist": {
     "production": [
       ">0.2%",
