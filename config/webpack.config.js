@@ -7,23 +7,23 @@ const resolve = require("resolve");
 const PnpWebpackPlugin = require("pnp-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CaseSensitivePathsPlugin = require("case-sensitive-paths-webpack-plugin");
-const InlineChunkHtmlPlugin = require("react-dev-utils/InlineChunkHtmlPlugin");
+const InlineChunkHtmlPlugin = require("../scripts/util/InlineChunkHtmlPlugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const safePostCssParser = require("postcss-safe-parser");
 const ManifestPlugin = require("webpack-manifest-plugin");
-const InterpolateHtmlPlugin = require("react-dev-utils/InterpolateHtmlPlugin");
+const InterpolateHtmlPlugin = require("../scripts/util/InterpolateHtmlPlugin");
 const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
-const WatchMissingNodeModulesPlugin = require("react-dev-utils/WatchMissingNodeModulesPlugin");
-const ModuleScopePlugin = require("react-dev-utils/ModuleScopePlugin");
-const getCSSModuleLocalIdent = require("react-dev-utils/getCSSModuleLocalIdent");
+const WatchMissingNodeModulesPlugin = require("../scripts/util/WatchMissingNodeModulesPlugin");
+const ModuleScopePlugin = require("../scripts/util/ModuleScopePlugin");
+const getCSSModuleLocalIdent = require("../scripts/util/getCSSModuleLocalIdent");
 const paths = require("./paths");
 const modules = require("./modules");
 const getClientEnvironment = require("./env");
-const ModuleNotFoundPlugin = require("react-dev-utils/ModuleNotFoundPlugin");
-const ForkTsCheckerWebpackPlugin = require("react-dev-utils/ForkTsCheckerWebpackPlugin");
-const typescriptFormatter = require("react-dev-utils/typescriptFormatter");
+const ModuleNotFoundPlugin = require("../scripts/util/ModuleNotFoundPlugin");
+const ForkTsCheckerWebpackPlugin = require("../scripts/util/ForkTsCheckerWebpackPlugin");
+const typescriptFormatter = require("../scripts/util/typescriptFormatter");
 
 const postcssNormalize = require("postcss-normalize");
 
@@ -171,7 +171,7 @@ module.exports = function (webpackEnv) {
 			 * require.resolve('webpack/hot/dev-server'),
 			 */
 			isEnvDevelopment &&
-        require.resolve("react-dev-utils/webpackHotDevClient"),
+        require.resolve("../scripts/util/webpackHotDevClient"),
 			// Finally, this is your app's code:
 			paths.appIndexJs
 			/*
@@ -393,7 +393,7 @@ module.exports = function (webpackEnv) {
 						{
 							options: {
 								cache: true,
-								formatter: require.resolve("react-dev-utils/eslintFormatter"),
+								formatter: require.resolve("../scripts/util/eslintFormatter"),
 								eslintPath: require.resolve("eslint"),
 								resolvePluginsRelativeTo: __dirname
 

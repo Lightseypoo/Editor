@@ -17,18 +17,18 @@ process.on("unhandledRejection", err => {
 require("../config/env");
 
 const fs = require("fs");
-const chalk = require("react-dev-utils/chalk");
+const chalk = require("chalk");
 const webpack = require("webpack");
 const WebpackDevServer = require("webpack-dev-server");
-const clearConsole = require("react-dev-utils/clearConsole");
-const checkRequiredFiles = require("react-dev-utils/checkRequiredFiles");
+const clearConsole = require("./util/clearConsole");
+const checkRequiredFiles = require(".util/checkRequiredFiles");
 const {
 	choosePort,
 	createCompiler,
 	prepareProxy,
 	prepareUrls
-} = require("react-dev-utils/WebpackDevServerUtils");
-const openBrowser = require("react-dev-utils/openBrowser");
+} = require(".util/WebpackDevServerUtils");
+const openBrowser = require(".util/openBrowser");
 const paths = require("../config/paths");
 const configFactory = require("../config/webpack.config");
 const createDevServerConfig = require("../config/webpackDevServer.config");
@@ -66,7 +66,7 @@ if (process.env.HOST) {
  * We require that you explicitly set browsers and do not fall back to
  * browserslist defaults.
  */
-const { checkBrowsers } = require("react-dev-utils/browsersHelper");
+const { checkBrowsers } = require(".util/browsersHelper");
 checkBrowsers(paths.appPath, isInteractive)
 	.then(() => {
 		/*
